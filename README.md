@@ -17,20 +17,20 @@
 | 語尾変換 | (文末) | ヤニ / ヤニね / ヤニよ |
 | フィラー | (文間) | ふぅ... / 一服... |
 
-## Tech Stack
+## 技術スタック
 
-- **Backend**: Rust + [Axum](https://github.com/tokio-rs/axum)
-- **Frontend**: React + TypeScript + [Tailwind CSS](https://tailwindcss.com/) + [Vite](https://vite.dev/)
-- **Dev Environment**: [Nix Flakes](https://nixos.wiki/wiki/Flakes) + [direnv](https://direnv.net/)
+- **バックエンド**: Rust + [Axum](https://github.com/tokio-rs/axum)
+- **フロントエンド**: React + TypeScript + [Tailwind CSS](https://tailwindcss.com/) + [Vite](https://vite.dev/)
+- **開発環境**: [Nix Flakes](https://nixos.wiki/wiki/Flakes) + [direnv](https://direnv.net/)
 
-## Getting Started
+## はじめかた
 
-### Prerequisites
+### 前提条件
 
-- [Nix](https://nixos.org/download/) (with flakes enabled)
-- [direnv](https://direnv.net/) (optional)
+- [Nix](https://nixos.org/download/) (flakes 有効化済み)
+- [direnv](https://direnv.net/) (任意)
 
-### Setup
+### セットアップ
 
 ```bash
 # direnvを使う場合
@@ -40,7 +40,7 @@ direnv allow
 nix develop
 ```
 
-### Build & Run
+### ビルド・起動
 
 ```bash
 # フロントエンドビルド
@@ -52,7 +52,7 @@ cargo run
 
 http://localhost:3000 にアクセス。
 
-### Development
+### 開発
 
 ```bash
 # バックエンドテスト
@@ -78,6 +78,6 @@ Content-Type: application/json
 }
 ```
 
-## License
+## ライセンス
 
 MIT
