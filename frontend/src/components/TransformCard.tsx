@@ -36,7 +36,6 @@ function TransformCard() {
   return (
     <div className="relative z-10 w-full max-w-2xl">
       <div className="bg-smoke-800/80 backdrop-blur-md rounded-2xl shadow-2xl border border-smoke-600/30 p-6 md:p-8">
-        {/* Input area */}
         <div className="mb-6">
           <textarea
             className="w-full h-36 bg-smoke-700/50 text-smoke-100 placeholder-smoke-400 rounded-xl p-4 border border-smoke-600/40 focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/20 resize-none transition-all duration-300 text-base"
@@ -46,7 +45,6 @@ function TransformCard() {
           />
         </div>
 
-        {/* Transform button */}
         <div className="flex justify-center mb-6">
           <button
             onClick={handleTransform}
@@ -67,14 +65,12 @@ function TransformCard() {
           </button>
         </div>
 
-        {/* Error display */}
         {error && (
           <div className="mb-4 p-4 bg-red-900/30 border border-red-500/40 rounded-xl text-red-300 text-sm animate-fade-in">
             {error}
           </div>
         )}
 
-        {/* Result display */}
         {result && (
           <div className="animate-fade-in">
             <div className="flex items-center gap-2 mb-3">
