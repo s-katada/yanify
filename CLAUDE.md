@@ -18,7 +18,7 @@ yanify/
 │   └── transform.rs         # 喫煙者構文変換ロジック + ユニットテスト
 └── frontend/
     ├── package.json         # npm設定
-    ├── vite.config.ts       # Vite設定 (dev時は/apiをlocalhost:3000にproxy)
+    ├── vite.config.ts       # Vite設定 (dev時は/apiをlocalhost:6543にproxy)
     └── src/
         ├── App.tsx          # メインコンポーネント
         ├── main.tsx         # エントリポイント
@@ -30,7 +30,7 @@ yanify/
 - `nix develop` or `direnv allow`: 開発環境のセットアップ
 - `cargo test`: ユニットテスト実行 (18テスト)
 - `cargo build`: バックエンドビルド
-- `cargo run`: サーバー起動 (http://localhost:3000)
+- `cargo run`: サーバー起動 (http://localhost:6543)
 - `cd frontend && npm install`: フロントエンド依存インストール
 - `cd frontend && npm run dev`: フロントエンド開発サーバー (Vite)
 - `cd frontend && npm run build`: フロントエンドプロダクションビルド
@@ -42,7 +42,7 @@ yanify/
 ## Development Workflow
 1. `cd frontend && npm run build` でフロントエンドをビルド
 2. `cargo run` でサーバー起動
-3. http://localhost:3000 でアクセス
+3. http://localhost:6543 でアクセス
 
 ## Transform Rules
 1. 語彙置換: 美味しい→ニコチンが染みる, 最高→一服の至福, 休憩→一服タイム

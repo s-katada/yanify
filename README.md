@@ -50,7 +50,7 @@ cd frontend && npm install && npm run build && cd ..
 cargo run
 ```
 
-http://localhost:3000 にアクセス。
+http://localhost:6543 にアクセス。
 
 ### 開発
 
