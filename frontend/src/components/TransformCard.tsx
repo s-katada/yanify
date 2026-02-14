@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 function TransformCard() {
+  const API_URL = import.meta.env.VITE_API_URL || '';
   const [inputText, setInputText] = useState('')
   const [result, setResult] = useState('')
   const [loading, setLoading] = useState(false)
@@ -14,7 +15,7 @@ function TransformCard() {
     setResult('')
 
     try {
-      const res = await fetch('/api/transform', {
+      const res = await fetch(`${API_URL}/api/transform`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: inputText }),
