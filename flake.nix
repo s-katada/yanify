@@ -12,14 +12,17 @@
       let
         overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs { inherit system overlays; };
-        rustToolchain = pkgs.rust-bin.stable.latest.default;
+        rustToolchain = pkgs.rust-bin.stable.latest.default.override {
+          targets = [ "wasm32-unknown-unknown" ];
+        };
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = [
             rustToolchain
-            pkgs.nodejs_20
+            pkgs.nodejs
             pkgs.nodePackages.npm
             pkgs.cargo-watch
+            pkgs.wrangler
           ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
             pkgs.libiconv
           ];
@@ -28,6 +31,7 @@
             echo "🚬 喫煙者構文変換 開発環境"
             echo "Rust: $(rustc --version)"
             echo "Node: $(node --version)"
+            echo "Wrangler: $(wrangler --version)"
           '';
         };
       }
