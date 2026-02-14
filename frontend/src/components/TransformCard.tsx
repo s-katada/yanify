@@ -36,10 +36,10 @@ function TransformCard() {
 
   return (
     <div className="relative z-10 w-full max-w-2xl">
-      <div className="bg-smoke-800/80 backdrop-blur-md rounded-2xl shadow-2xl border border-smoke-600/30 p-6 md:p-8">
+      <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-smoke-200/60 p-6 md:p-8">
         <div className="mb-6">
           <textarea
-            className="w-full h-36 bg-smoke-700/50 text-smoke-100 placeholder-smoke-400 rounded-xl p-4 border border-smoke-600/40 focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/20 resize-none transition-all duration-300 text-base"
+            className="w-full h-36 bg-smoke-50/80 text-smoke-700 placeholder-smoke-300 rounded-xl p-4 border border-smoke-200 focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/20 resize-none transition-all duration-300 text-base"
             placeholder="ここに文章を入力してください..."
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
@@ -50,7 +50,7 @@ function TransformCard() {
           <button
             onClick={handleTransform}
             disabled={loading || !inputText.trim()}
-            className="btn-smoke px-8 py-3 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 disabled:from-smoke-600 disabled:to-smoke-600 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 text-lg shadow-lg"
+            className="btn-smoke px-8 py-3 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 disabled:from-smoke-300 disabled:to-smoke-300 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 text-lg shadow-md"
           >
             {loading ? (
               <span className="flex items-center gap-2">
@@ -67,7 +67,7 @@ function TransformCard() {
         </div>
 
         {error && (
-          <div className="mb-4 p-4 bg-red-900/30 border border-red-500/40 rounded-xl text-red-300 text-sm animate-fade-in">
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm animate-fade-in">
             {error}
           </div>
         )}
@@ -75,12 +75,12 @@ function TransformCard() {
         {result && (
           <div className="animate-fade-in">
             <div className="flex items-center gap-2 mb-3">
-              <div className="h-px flex-1 bg-smoke-600/50" />
-              <span className="text-smoke-300 text-sm font-medium">変換結果</span>
-              <div className="h-px flex-1 bg-smoke-600/50" />
+              <div className="h-px flex-1 bg-smoke-300/50" />
+              <span className="text-smoke-400 text-sm font-medium">変換結果</span>
+              <div className="h-px flex-1 bg-smoke-300/50" />
             </div>
-            <div className="bg-smoke-700/40 rounded-xl p-5 border border-amber-500/20">
-              <p className="result-text text-smoke-100 text-lg leading-relaxed">
+            <div className="bg-smoke-50/60 rounded-xl p-5 border border-smoke-200/40">
+              <p className="result-text text-smoke-600 text-lg leading-relaxed">
                 {result}
               </p>
             </div>

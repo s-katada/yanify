@@ -4,69 +4,96 @@
 
 body {
   margin: 0;
-  background-color: #1a1a2e;
+  background: linear-gradient(170deg, #f5f0e8 0%, #ede6da 40%, #f0e8dc 70%, #f5f0e8 100%);
   min-height: 100vh;
   font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
 }
 
+.smoke-haze {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 30% 60%, rgba(180, 165, 140, 0.3) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 70% at 70% 40%, rgba(170, 155, 130, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 40% at 50% 80%, rgba(160, 145, 120, 0.15) 0%, transparent 50%);
+  animation: hazeShift 12s ease-in-out infinite alternate;
+}
+
+@keyframes hazeShift {
+  0% { opacity: 0.6; transform: scale(1) translateY(0); }
+  50% { opacity: 1; transform: scale(1.05) translateY(-10px); }
+  100% { opacity: 0.7; transform: scale(1.02) translateY(5px); }
+}
+
 .smoke-particle {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, rgba(180, 180, 180, 0.5) 0%, transparent 70%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(160, 145, 120, 0.35) 0%, rgba(180, 165, 140, 0.1) 40%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+  filter: blur(8px);
 }
 
 .smoke-particle:nth-child(1) {
-  left: 20%;
-  bottom: 0;
-  animation: smokeRise 4s ease-out infinite;
+  left: 15%;
+  bottom: -20px;
+  width: 120px;
+  height: 120px;
+  animation: smokeRise 8s ease-out infinite;
 }
 
 .smoke-particle:nth-child(2) {
-  left: 50%;
-  bottom: 0;
-  animation: smokeRise 5s ease-out infinite 1.2s;
+  left: 45%;
+  bottom: -20px;
+  width: 100px;
+  height: 100px;
+  animation: smokeRise 10s ease-out infinite 2s;
 }
 
 .smoke-particle:nth-child(3) {
-  left: 75%;
-  bottom: 0;
-  animation: smokeRise 6s ease-out infinite 0.6s;
+  left: 70%;
+  bottom: -20px;
+  width: 140px;
+  height: 140px;
+  animation: smokeRise 12s ease-out infinite 1s;
 }
 
 .smoke-particle:nth-child(4) {
-  left: 35%;
-  bottom: 0;
-  animation: smokeRise 4.5s ease-out infinite 2s;
+  left: 30%;
+  bottom: -20px;
+  width: 90px;
+  height: 90px;
+  animation: smokeRise 9s ease-out infinite 4s;
 }
 
 .smoke-particle:nth-child(5) {
-  left: 60%;
-  bottom: 0;
-  animation: smokeRise 5.5s ease-out infinite 0.3s;
+  left: 58%;
+  bottom: -20px;
+  width: 110px;
+  height: 110px;
+  animation: smokeRise 11s ease-out infinite 0.5s;
 }
 
 @keyframes smokeRise {
   0% {
     transform: translateY(0) scale(1) translateX(0);
+    opacity: 0;
+  }
+  10% {
     opacity: 0.4;
   }
-  25% {
-    transform: translateY(-30px) scale(1.8) translateX(10px);
+  30% {
+    transform: translateY(-25vh) scale(2) translateX(30px);
     opacity: 0.3;
   }
-  50% {
-    transform: translateY(-60px) scale(2.5) translateX(-5px);
-    opacity: 0.2;
-  }
-  75% {
-    transform: translateY(-90px) scale(3.2) translateX(8px);
-    opacity: 0.1;
+  60% {
+    transform: translateY(-55vh) scale(3.5) translateX(-20px);
+    opacity: 0.15;
   }
   100% {
-    transform: translateY(-120px) scale(4) translateX(-3px);
+    transform: translateY(-90vh) scale(5) translateX(15px);
     opacity: 0;
   }
 }
