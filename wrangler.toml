@@ -1,6 +1,6 @@
 name = "yanify-api"
-main = "build/worker/shim.mjs"
+main = "crates/yanify-worker/build/worker/shim.mjs"
 compatibility_date = "2024-01-01"
 
 [build]
-command = "cargo install -q worker-build && worker-build --release --crate yanify-worker"
+command = "cargo install -q worker-build && cd crates/yanify-worker && worker-build --release"
