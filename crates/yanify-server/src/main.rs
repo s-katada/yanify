@@ -1,5 +1,3 @@
-mod transform;
-
 use axum::{
     extract::Json,
     http::Method,
@@ -22,7 +20,7 @@ struct TransformResponse {
 }
 
 async fn handle_transform(Json(req): Json<TransformRequest>) -> Json<TransformResponse> {
-    let transformed = transform::transform(&req.text);
+    let transformed = yanify_transform::transform(&req.text);
     Json(TransformResponse {
         original: req.text,
         transformed,
