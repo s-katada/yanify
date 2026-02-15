@@ -20,6 +20,7 @@ fn replace_vocabulary(text: &str) -> String {
         ("美味しい", "ニコチンが染みる"),
         ("最高", "一服の至福"),
         ("休憩", "一服タイム"),
+        ("憩い", "チルタイム"),
     ];
     let mut result = text.to_string();
     for (from, to) in replacements {
