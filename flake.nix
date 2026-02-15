@@ -19,8 +19,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             rustToolchain
-            pkgs.nodejs
-            pkgs.nodePackages.npm
+            pkgs.bun
             pkgs.cargo-watch
             pkgs.wrangler
           ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
@@ -30,7 +29,7 @@
           shellHook = ''
             echo "🚬 喫煙者構文変換 開発環境"
             echo "Rust: $(rustc --version)"
-            echo "Node: $(node --version)"
+            echo "Bun: $(bun --version)"
             echo "Wrangler: $(wrangler --version)"
           '';
         };
