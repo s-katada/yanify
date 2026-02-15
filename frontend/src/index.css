@@ -1,12 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-smoke-50: #f5f0e8;
+  --color-smoke-100: #e8ddd0;
+  --color-smoke-200: #c4b49e;
+  --color-smoke-300: #9e8b74;
+  --color-smoke-400: #7a6a55;
+  --color-smoke-500: #5c4e3c;
+  --color-smoke-600: #433929;
+  --color-smoke-700: #342c1f;
+  --color-smoke-800: #261f16;
+  --color-smoke-900: #1a150e;
+  --color-amber-400: #f59e0b;
+  --color-amber-500: #d97706;
+  --color-amber-600: #b45309;
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 body {
   margin: 0;
-  background: linear-gradient(170deg, #f5f0e8 0%, #ede6da 40%, #f0e8dc 70%, #f5f0e8 100%);
+  background: linear-gradient(
+    170deg,
+    #f5f0e8 0%,
+    #ede6da 40%,
+    #f0e8dc 70%,
+    #f5f0e8 100%
+  );
   min-height: 100vh;
-  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-family:
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
 }
 
 .smoke-haze {
@@ -14,23 +47,49 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 50% at 30% 60%, rgba(180, 165, 140, 0.3) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 70% at 70% 40%, rgba(170, 155, 130, 0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 40% at 50% 80%, rgba(160, 145, 120, 0.15) 0%, transparent 50%);
+    radial-gradient(
+      ellipse 80% 50% at 30% 60%,
+      rgba(180, 165, 140, 0.3) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 70% at 70% 40%,
+      rgba(170, 155, 130, 0.2) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 100% 40% at 50% 80%,
+      rgba(160, 145, 120, 0.15) 0%,
+      transparent 50%
+    );
   animation: hazeShift 12s ease-in-out infinite alternate;
 }
 
 @keyframes hazeShift {
-  0% { opacity: 0.6; transform: scale(1) translateY(0); }
-  50% { opacity: 1; transform: scale(1.05) translateY(-10px); }
-  100% { opacity: 0.7; transform: scale(1.02) translateY(5px); }
+  0% {
+    opacity: 0.6;
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.02) translateY(5px);
+  }
 }
 
 .smoke-particle {
   position: absolute;
   width: 80px;
   height: 80px;
-  background: radial-gradient(circle, rgba(160, 145, 120, 0.35) 0%, rgba(180, 165, 140, 0.1) 40%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(160, 145, 120, 0.35) 0%,
+    rgba(180, 165, 140, 0.1) 40%,
+    transparent 70%
+  );
   border-radius: 50%;
   pointer-events: none;
   filter: blur(8px);
@@ -99,7 +158,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba(245, 158, 11, 0.3);
   }
   50% {
