@@ -1,38 +1,39 @@
-import { useState } from 'react'
+import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 function TransformCard() {
   const API_URL = import.meta.env.VITE_API_URL || '';
-  const [inputText, setInputText] = useState('')
-  const [result, setResult] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [inputText, setInputText] = useState('');
+  const [result, setResult] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleTransform = async () => {
-    if (!inputText.trim()) return
+    if (!inputText.trim()) return;
 
-    setLoading(true)
-    setError('')
-    setResult('')
+    setLoading(true);
+    setError('');
+    setResult('');
 
     try {
       const res = await fetch(`${API_URL}/api/transform`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: inputText }),
-      })
+      });
 
       if (!res.ok) {
-        throw new Error(`API error: ${res.status}`)
+        throw new Error(`API error: ${res.status}`);
       }
 
-      const data = await res.json()
-      setResult(data.transformed)
+      const data = await res.json();
+      setResult(data.transformed);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'An error occurred')
+      setError(e instanceof Error ? e.message : 'An error occurred');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="relative z-10 w-full max-w-2xl">
@@ -48,16 +49,14 @@ function TransformCard() {
 
         <div className="flex justify-center mb-6">
           <button
+            type="button"
             onClick={handleTransform}
             disabled={loading || !inputText.trim()}
             className="btn-smoke px-8 py-3 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 disabled:from-smoke-300 disabled:to-smoke-300 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 text-lg shadow-md"
           >
             {loading ? (
               <span className="flex items-center gap-2">
-                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
+                <Loader2 className="animate-spin h-5 w-5" />
                 変換中...
               </span>
             ) : (
@@ -76,7 +75,9 @@ function TransformCard() {
           <div className="animate-fade-in">
             <div className="flex items-center gap-2 mb-3">
               <div className="h-px flex-1 bg-smoke-300/50" />
-              <span className="text-smoke-400 text-sm font-medium">変換結果</span>
+              <span className="text-smoke-400 text-sm font-medium">
+                変換結果
+              </span>
               <div className="h-px flex-1 bg-smoke-300/50" />
             </div>
             <div className="bg-smoke-50/60 rounded-xl p-5 border border-smoke-200/40">
@@ -88,7 +89,7 @@ function TransformCard() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default TransformCard
+export default TransformCard;

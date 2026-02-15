@@ -1,4 +1,4 @@
-import TransformCard from './components/TransformCard'
+import TransformCard from './components/TransformCard';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         テキストを喫煙者構文に変換します
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
