@@ -30,10 +30,7 @@ fn replace_vocabulary(text: &str) -> String {
 }
 
 fn replace_greetings(text: &str) -> String {
-    let replacements = [
-        ("おはよう", "おはヤニ"),
-        ("おやすみ", "おやすヤニ"),
-    ];
+    let replacements = [("おはよう", "おはヤニ"), ("おやすみ", "おやすヤニ")];
     let mut result = text.to_string();
     for (from, to) in replacements {
         result = result.replace(from, to);
@@ -84,7 +81,11 @@ fn transform_sentence_endings(text: &str) -> String {
             }
         } else if remaining.starts_with('\n') {
             let ending = yani_endings[rng.gen_range(0..yani_endings.len())];
-            if !result.is_empty() && !result.ends_with('\n') && !result.ends_with("🚬") && !result.ends_with("🚬💨") {
+            if !result.is_empty()
+                && !result.ends_with('\n')
+                && !result.ends_with("🚬")
+                && !result.ends_with("🚬💨")
+            {
                 result.push_str(ending);
             }
             result.push('\n');
@@ -146,7 +147,11 @@ fn transform_sentence_endings_deterministic(text: &str) -> String {
             let marker_chars: Vec<char> = "🚬".chars().collect();
             i += marker_chars.len();
         } else if remaining.starts_with('\n') {
-            if !result.is_empty() && !result.ends_with('\n') && !result.ends_with("🚬") && !result.ends_with("🚬💨") {
+            if !result.is_empty()
+                && !result.ends_with('\n')
+                && !result.ends_with("🚬")
+                && !result.ends_with("🚬💨")
+            {
                 result.push_str(ending);
             }
             result.push('\n');
@@ -285,7 +290,11 @@ mod tests {
     fn test_multiple_sentences() {
         let result = transform_deterministic("一つ。二つ。三つ。");
         let count = result.matches("ヤニ🚬").count();
-        assert_eq!(count, 3, "Each sentence should end with ヤニ🚬, got: {}", result);
+        assert_eq!(
+            count, 3,
+            "Each sentence should end with ヤニ🚬, got: {}",
+            result
+        );
     }
 
     #[test]
